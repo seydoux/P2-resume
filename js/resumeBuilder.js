@@ -161,9 +161,43 @@ var work = {
 
 // create education object
 var education = {
-
-};
+	// create an array for all school attended
+    "schools": [
+        {"name": "Virginia Commonwealth University",
+            "location": "Richmond, VA",
+            "major": "Bioinformatics",
+            "degree": "~MS",
+            "dates": "2012-2014",
+            "url": "www.vcu.edu",
+        },
+        {"name": "St. Edward's University",
+            "location": "Austin, TX",
+            "major": "Bioinformatics",
+            "degree": "BS",
+            "dates": "2006-2011",
+            "url": "www.stedwards.edu/"
+        }
+    ],
+    //display function for education items
+    display: function(){
+    	// walk through school array
+        for(school in education.schools) {
+            $("#education").append(HTMLschoolStart);
+            var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[school].name);
+            var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
+            var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
+            var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
+            var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major);
+            var formattedSchoolNameDegree = formattedSchoolName + formattedSchoolDegree;
+            $(".education-entry:last").append(formattedSchoolNameDegree);
+            $(".education-entry:last").append(formattedSchoolDates);
+            $(".education-entry:last").append(formattedSchoolLocation);
+            $(".education-entry:last").append(formattedSchoolMajor);
+        } // end of for loop
+    } // end of display
+ };   
 // end education object
 
 bio.display();
 work.display();
+education.display();
