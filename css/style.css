@@ -1,3 +1,32 @@
+#main {
+  text-align: center;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+img {
+  width: 100%;
+  max-width: 400px;
+}
+
+body {
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif; 
+  background-color: #d5d7d7;
+  text-align: center;
+}
+
+header {
+  height: 100%;
+  width: 100%;
+  max-width: 900px;
+  max-height: 400px;
+  font-weight: bold;
+  text-align: right;
+  color: #444546;
+  border-bottom: 0.25em solid #aaaeaf;
+}
+
 body,
 div,
 ul,
@@ -26,7 +55,7 @@ h6 {
 
 h1 {
   font-size: 40px;
-  color: #f5a623;
+  color: #c0d8ed;
   line-height: 48px;
   display: inline;
 }
@@ -34,15 +63,16 @@ h1 {
 h2 {
   font-weight: bold;
   font-size: 24px;
-  color: #999;
+  color: #c0d8ed;
   line-height: 29px;
   padding: 10px;
+  background-color: #7e7976;
 }
 
 h3 {
   font-style: italic;
   font-size: 20px;
-  color: #000;
+  color: #c0d8ed;
   line-height: 22px;
 }
 
@@ -86,7 +116,7 @@ p {
 }
 
 a {
-  color: #1199c3;
+  color: #3f3e3c;
   text-decoration: none;
   margin-top: 10px;
   display: block;
@@ -95,13 +125,15 @@ a {
 .welcome-message {
   font-style: italic;
   font-size: 18px;
+  text-align: left;
   color: #f3f3f3;
   line-height: 28px;
 }
 
 #skills-h3 {
-  color: #f5ae23;
+  color: #c0d8ed;
   display: none;
+  text-align: left;
 }
 
 .orange {
@@ -109,7 +141,8 @@ a {
 }
 
 .orange-text {
-  color: #f5ae23;
+  font-weight: bold;
+  color: #c0d8ed;
 }
 
 .white-text {
@@ -118,20 +151,26 @@ a {
 }
 
 .gray {
-  background-color: #f3f3f3;
+  background-color: #bfbcbb;
   padding-bottom: 10px;
   clear:both;
 }
 
 .dark-gray {
-  background-color: #4a4a4a;
+  background-color: #3f3e3c;
 }
 
+.project-entry {
+  background-color: #bfbcbb;
+}
+
+.role {
+  color: #c0d8ed;
+}
 /* TODO: Replace with image later */
 #header {
-  background-color: #484848;
+  background-color: #3f3e3c;
 }
-
 .flex-box {
   display: -webkit-flex;
   display: flex;
@@ -147,17 +186,20 @@ a {
 
 ul {
   list-style-type: none;
+  color: #c0d8ed;
 }
 
 .biopic {
   float: left;
   padding: 10px;
-  width: 200px;
+  width: 100%;
+  max-width: 200px;
   display: none;
 }
 
-img {
-  padding: 10px;
+.projectPic {
+  width: 100%;
+  max-width: 400px;
 }
 
 span {
@@ -166,6 +208,7 @@ span {
 
 #lets-connect {
   text-align: center;
+  background-color: #3f3e3c;
 }
 
 /* Media queries to handle various device widths */
