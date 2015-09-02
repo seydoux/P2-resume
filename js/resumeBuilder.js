@@ -1,82 +1,21 @@
-/*
-This is empty on purpose! Your code to build the resume will go here.
- */
-/*var name = "Marie-Isabelle Seydoux";
-var role = "Bioinformatics/Wed Developer";
-var mobile = "610-329-1492";
-var email = "seydouxMIB@gmail.com";
-var twitter = "";
-var github = "https://github.com/seydoux"
-var blog = "";
-var location = "West Chester, PA";
-var bioPic = "http://i.imgur.com/RGk4R.jpg";
-var welcomeMsg = "Hello, welcome to my interactive Resume!";
-
-var formattedName = HTMLheaderName.replace("%data%", name);
-var formattedRole = HTMLheaderRole.replace("%data%", role);
-var formattedMobile = HTMLmobile.replace("%data%", mobile);
-var formattedEmail = HTMLemail.replace("%data%", email);
-var formattedTwitter= HTMLtwitter.replace("%data%", twitter);
-var formattedGithub = HTMLgithub.replace("%data%", github);
-var formattedBlog = HTMLblog.replace("%data%", blog);
-var formattedLocation = HTMLlocation.replace("%data%", location);
-var formattedBiopic = HTMLbioPic.replace("%data%", bioPic);
-var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", welcomeMsg);
-*/
-/*var bio = {
-	"names" : "Marie-Isabelle Seydoux",
-	"role" : "Bioinformatics/Wed Developer".
-	"contacts" : {
-		"mobile" : "610-329-1492",
-		"email" : "seydouxMIB@gmail.com",
-		"github" : "seydoux",
-		"location" : "West Chester, PA" 
-	},
-	"welcomeMsg" : "Welcome to my interactive resume!",
-	"skills" : [
-	"Java", "python", "perl", "R"
-	],
-	"bioPic" : "http://i.imgur.com/RGk4R.jpg",
-	display: function() {
-        var formattedName = HTMLheaderName.replace("%data%", bio.names);
-        var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-        var formattedWelcomeMsg = HTMLWelcomeMsg.replace("%data%", bio.welcomeMsg);
-        var formattedBiopic = HTMLbioPic.replace("%data%", bio.bioPic);
-        $("#header").prepend(formattedRole);
-        $("#header").prepend(formattedName);
-        for (contact in bio.contacts) {
-            var formattedContact = HTMLcontactGeneric.replace("%contact%", contact).replace("%data%", bio.contacts[contact]);
-            $("#topContacts").append(formattedContact);
-            $("#footerContacts").append(formattedContact);
-        }
-        $("#header").append(formattedBiopic);
-        $("#header").append(formattedWelcomeMsg);
-        if (bio.skills.length > 0) {
-            $("#header").append(HTMLskillsStart);
-            for (i = 0; i < bio.skills.length; i++) {
-                var formattedSkill = HTMLskills.replace("%data%", bio.skills[i]);
-                $("#header").append(formattedSkill);
-            }
-        }
-};*/
-
-// create bio object
+/*  create bio object with correct info, skills is a variable length array */
 var bio = {
-	// fill object with correct information
     "name": "Marie-Isabelle Seydoux",
     "role": "Web Developer/Bioinformatician",
     "contacts": {
         "mobile": "610-329-1492",
         "email": "seydouxMIB@gmail.com",
         "github": "seydoux",
-        "location": "West Chester, PA",
+        "location": "West Chester, PA"
     },
     "welcomeMessage": "Welcome to my resume!",
-    // skills is an array 
     "skills": ["python", "perl", "Java"],
-    "biopic": "http://i.imgur.com/RGk4R.jpg",
-    // this is the function that is called when we want the output formatted from the bio object
-    display: function() {
+    "biopic": "http://i.imgur.com/RGk4R.jpg"    
+};
+// end of bio object
+
+/* Bio Display function */
+bio.display = function() {
     	// format bio objects
         var formattedName = HTMLheaderName.replace("%data%", bio.name);
         var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
@@ -106,13 +45,10 @@ var bio = {
             } // end of for loop
         } // end of if statement
     } // end of display function for bio object
-};
-// end of bio object
 
-// create work object
+/* create work object where jobs is a variable length array */
 var work = {
 	"jobs" : [
-		// create an array of all posistions held, each posistion is its own block
 		{
 			"employer" : "Virginia Commonwealth University",
 			"title" : "Teaching Assistant",
@@ -133,42 +69,42 @@ var work = {
 			"location" : "Austin, TX",
 			"dates" : "January 2010 - May 2010",
 			"description" : "Assisted students is learning how to annotate and assemble Drosphila sp. fosmid sequences",
-		},
-	],
-	// function for displaying the info contained in jobs
-    display: function () {
-    // walk through the jobs array 	
-	    for (job in work.jobs) {
-	    	//add to relvent workExperience section of html doc
-	        $("#workExperience").append(HTMLworkStart);
-	        // format the information in each job
-	        var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
-	        var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
-	        var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
-	        var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
-	        var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
-	        var formattedEmployerTitle = formattedEmployer + formattedTitle
-	        // output info
-	        $(".work-entry:last").append(formattedEmployerTitle);
-	        $(".work-entry:last").append(formattedDates);
-	        $(".work-entry:last").append(formattedLocation);
-	        $(".work-entry:last").append(formattedDescription);
-	    } // end of for loop    
-	}//end of function	
+		}
+	]
 };
+/* end work object */
 
-// end work object
+/* Function for displaying work information 
+	Will first start work experience format and then format data in work object to display */
+work.display= function () {
+	
+    for (job in work.jobs) {
 
-// create education object
+        $("#workExperience").append(HTMLworkStart);
+
+        var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+        var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+        var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+        var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+        var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+        var formattedEmployerTitle = formattedEmployer + formattedTitle
+        // output info
+        $(".work-entry:last").append(formattedEmployerTitle);
+        $(".work-entry:last").append(formattedDates);
+        $(".work-entry:last").append(formattedLocation);
+        $(".work-entry:last").append(formattedDescription);
+    } // end of for loop    
+}//end of function	
+
+/* create education object with array of school and array of online courses */
 var education = {
-	// create an array for all school attended
     "schools": [
         {"name": "Virginia Commonwealth University",
             "location": "Richmond, VA",
             "major": "Bioinformatics",
             "degree": "~MS",
             "dates": "2012-2014",
-            "url": "www.vcu.edu",
+            "url": "www.vcu.edu"
         },
         {"name": "St. Edward's University",
             "location": "Austin, TX",
@@ -178,26 +114,67 @@ var education = {
             "url": "www.stedwards.edu/"
         }
     ],
-    //display function for education items
-    display: function(){
-    	// walk through school array
-        for(school in education.schools) {
-            $("#education").append(HTMLschoolStart);
-            var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[school].name);
-            var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
-            var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
-            var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
-            var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major);
-            var formattedSchoolNameDegree = formattedSchoolName + formattedSchoolDegree;
-            $(".education-entry:last").append(formattedSchoolNameDegree);
-            $(".education-entry:last").append(formattedSchoolDates);
-            $(".education-entry:last").append(formattedSchoolLocation);
-            $(".education-entry:last").append(formattedSchoolMajor);
-        } // end of for loop
-    } // end of display
  };   
-// end education object
+/* end education object */
+
+/* display function for education items 
+	walk through schools array to display everything*/
+education.display = function(){
+	/*walk through school array */
+    for(school in education.schools) {
+        $("#education").append(HTMLschoolStart);
+        var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[school].name);
+        var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
+        var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
+        var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
+        var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major);
+        var formattedSchoolNameDegree = formattedSchoolName + formattedSchoolDegree;
+        $(".education-entry:last").append(formattedSchoolNameDegree);
+        $(".education-entry:last").append(formattedSchoolDates);
+        $(".education-entry:last").append(formattedSchoolLocation);
+        $(".education-entry:last").append(formattedSchoolMajor);
+    } /* end of for loop */
+} /* end of display */
+
+/* create project object */
+var projects = {
+    "projects": [
+        {"title": "Project 1",
+            "dates": "2014",
+            "description": "First Project",
+            "images": ["http://i.imgur.com/kxnCj.jpg"]
+        },
+        {"title": "Project 2",
+            "dates": "2015",
+            "description": "Second Project",
+            "images": ["http://i.imgur.com/Wn091.jpg"]
+        }
+    ]
+};
+/* end of projects object */
+
+/* display functions for projects
+	just a placeholder for now, need to fill in with real project info */
+projects.display = function() {
+    for (project in projects.projects) {
+        $("#projects").append(HTMLprojectStart);
+        var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
+        $(".project-entry:last").append(formattedTitle);
+        var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
+        $(".project-entry:last").append(formattedDates);
+        var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
+        $(".project-entry:last").append(formattedDescription);
+        if (projects.projects[project].images.length > 0) {
+            for (url in projects.projects[project].images) {
+                var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[url]);
+                $(".project-entry:last").append(formattedImage);
+            }
+        }
+    }
+}
+/* end of projects display function */
 
 bio.display();
 work.display();
 education.display();
+projects.display();
