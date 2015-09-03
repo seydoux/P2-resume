@@ -114,7 +114,19 @@ var education = {
             "url": "www.stedwards.edu/"
         }
     ],
- };   
+    "onlineCourses": [
+        {"title": "Front-End Web Developer Nanodegree",
+            "school": "Udacity",
+            "dates": "August 2015",
+            "url": "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"
+        },
+         {"title": "Data Analyst Nanodegree",
+            "school": "Udacity",
+            "dates": "August 2015",
+            "url": "https://www.udacity.com/course/data-analyst-nanodegree--nd002"
+        }
+    ]
+ };
 /* end education object */
 
 /* display function for education items 
@@ -134,6 +146,18 @@ education.display = function(){
         $(".education-entry:last").append(formattedSchoolLocation);
         $(".education-entry:last").append(formattedSchoolMajor);
     } /* end of for loop */
+
+    for(course in education.onlineCourses) {
+            $("#education").append(HTMLschoolStart);
+            var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[course].title);
+            var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[course].school);
+            var formattedOnlineTitleSchool = formattedOnlineTitle + formattedOnlineSchool;
+            var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[course].dates);
+            var formattedOnlineURL = HTMLonlineURL.replace("%data%", education.onlineCourses[course].url);
+            $(".education-entry:last").append(formattedOnlineTitleSchool);
+            $(".education-entry:last").append(formattedOnlineDates);
+            $(".education-entry:last").append(formattedOnlineURL);
+        } /* end of online courses loop */
 } /* end of display */
 
 /* create project object */
