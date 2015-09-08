@@ -16,7 +16,7 @@ var bio = {
 
 /* Bio Display function */
 bio.display = function() {
-    	// format bio objects
+        // format bio objects
         var formattedName = HTMLheaderName.replace("%data%", bio.name);
         var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
         var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
@@ -48,36 +48,36 @@ bio.display = function() {
 
 /* create work object where jobs is a variable length array */
 var work = {
-	"jobs" : [
-		{
-			"employer" : "Virginia Commonwealth University",
-			"title" : "Teaching Assistant",
-			"location" : "Richmond, VA",
-			"dates" : "August 2013 - December 2013",
-			"description" : "Introduced students to bioinformatics concepts,beginning python programming, programming logic, and evaluated student projects",
-		},
-		{
-			"employer" : "Virginia Commonwealth University",
-			"title" : "Teaching Assistant",
-			"location" : "Richmond, VA",
-			"dates" : "January 2013 - May 2013",
-			"description" : "Assisted students in learning about bacterial viruses, their genetic structure, and in identifying  potential gene functions",
-		},
-		{
-			"employer" : "St. Edward's University",
-			"title" : "Teaching Assistant",
-			"location" : "Austin, TX",
-			"dates" : "January 2010 - May 2010",
-			"description" : "Assisted students is learning how to annotate and assemble Drosphila sp. fosmid sequences",
-		}
-	]
+    "jobs" : [
+        {
+            "employer" : "Virginia Commonwealth University",
+            "title" : "Teaching Assistant",
+            "location" : "Richmond, VA",
+            "dates" : "August 2013 - December 2013",
+            "description" : "Introduced students to bioinformatics concepts,beginning python programming, programming logic, and evaluated student projects",
+        },
+        {
+            "employer" : "Virginia Commonwealth University",
+            "title" : "Teaching Assistant",
+            "location" : "Richmond, VA",
+            "dates" : "January 2013 - May 2013",
+            "description" : "Assisted students in learning about bacterial viruses, their genetic structure, and in identifying  potential gene functions",
+        },
+        {
+            "employer" : "St. Edward's University",
+            "title" : "Teaching Assistant",
+            "location" : "Austin, TX",
+            "dates" : "January 2010 - May 2010",
+            "description" : "Assisted students is learning how to annotate and assemble Drosphila sp. fosmid sequences",
+        }
+    ]
 };
 /* end work object */
 
 /* Function for displaying work information 
-	Will first start work experience format and then format data in work object to display */
+    Will first start work experience format and then format data in work object to display */
 work.display= function () {
-	
+    
     for (job in work.jobs) {
 
         $("#workExperience").append(HTMLworkStart);
@@ -94,7 +94,7 @@ work.display= function () {
         $(".work-entry:last").append(formattedLocation);
         $(".work-entry:last").append(formattedDescription);
     } // end of for loop    
-}//end of function	
+}//end of function  
 
 /* create education object with array of school and array of online courses */
 var education = {
@@ -130,9 +130,9 @@ var education = {
 /* end education object */
 
 /* display function for education items 
-	walk through schools array to display everything*/
+    walk through schools array to display everything*/
 education.display = function(){
-	/*walk through school array */
+    /*walk through school array */
     for(school in education.schools) {
         $("#education").append(HTMLschoolStart);
         var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[school].name);
@@ -178,7 +178,7 @@ var projects = {
 /* end of projects object */
 
 /* display functions for projects
-	just a placeholder for now, need to fill in with real project info */
+    just a placeholder for now, need to fill in with real project info */
 projects.display = function() {
     for (project in projects.projects) {
         $("#projects").append(HTMLprojectStart);
@@ -202,3 +202,45 @@ bio.display();
 work.display();
 education.display();
 projects.display();
+
+/* keep track of user clicks 
+$(document).click(function(loc) {
+  logClicks(loc.pageX,loc.pageY); 
+});
+moved to helper.js
+*/
+
+/* keep track of all locations 
+function locationizer() {
+    var locationArray = [];
+
+    for (job in work.jobs) {
+        locationArray.push(work.jobs[job].location);
+    }
+
+    for (school in education.schools) {
+        locationArray.push(education.schools[school].location);
+    }
+
+    locationArray.push(bio.contacts.location);
+
+    return locationArray;
+}
+
+also moved to help.js
+ end of locationizer */
+
+
+$('#main').append(internationalizeButton);
+/* international name */
+function inName(name) {
+    name = name.split(" ");
+    console.log(name);
+    name[1] = name[1].toUpperCase();
+    name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCaser();
+
+    return name[0] + " " + name[1];
+}
+
+/* add google map to resume */
+$("#mapDiv").append(googleMap);
